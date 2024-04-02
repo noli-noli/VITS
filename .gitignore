@@ -14,3 +14,9 @@ configs/dracu_japanese_base2.json
 configs/tolove_japanese_base2.json
 
 .idea
+
+#追記
+*.wav
+.env
+datasets/
+models/
