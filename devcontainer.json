@@ -1,0 +1,6 @@
+{
+    "name": "VITS",
+    "service": "VITS",
+    "workspaceFolder": "/src",
+    "dockerComposeFile": "./docker-compose.yml"
+}

@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  vits-exp:
+    build:
+      context: ./
+      dockerfile: dockerfile
+
+      #dockerfile内で使用する変数を渡す。
+      args:
+        - http_tmp=$http_proxy
+        - https_tmp=$https_proxy
+    
+    #vits用ワークスペースを、コンテナ内部srcにマウント
+    volumes:
+      - ./vits-workspace:/src
+    #ワーキングディレクトリを設定
+    working_dir: /src
+
+    #systemdを立ち上げる
+    command: /sbin/init
+
+    #環境変数読み込む。
+    env_file:
+      - .env
+
+    #ttyとprivilegedを有効化
+    privileged: true
+    tty: true
+
+    #ポート設定
+    #ports:
+    #  - "7860:7860"
+
+    #GPUを使用するための設定
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+
+    #core dumpを防ぐ為の設定
+    shm_size: 12GB
