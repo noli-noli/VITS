@@ -53,7 +53,7 @@ pip install -r requirements.txt
 
 
 # データセット準備～学習
-データセットの準備において、シングル学習(話者が1人)とマルチ学習(話者が複数人)でそれぞれ設定方と学習時のプログラムが異なります。 
+データセットの準備において、**シングル学習(話者が1人)** と **マルチ学習(話者が複数人)** でそれぞれ設定方と学習時のプログラムが異なります。 
 
 **シングル学習**
 1. `datasets/`ディレクトリ内部に、任意の名称でディレクトリを作成
@@ -66,6 +66,7 @@ dataset/001.wav|こんにちは
 dataset/002.wav|初めまして
         ・
         ・
+dataset/100.wav|よろしく
 ```  
 
 - 例(val.txt) 10サンプル程
@@ -75,19 +76,18 @@ dataset/009.wav|本当ですか
 dataset/053.wav|では
         ・
         ・
+dataset/088.wav|作業を開始します
 ```  
 
 4. `vits_preprocess.py`を実行し、テキストファイル内の「字幕」を前処理
-- 例
 ```bash
 python3 vits_preprocess.py --filelists ./datasets/sample/train.txt ./datasets/sample/val.txt
 ```  
 
 
-5. `config-single.json`内の **training_files** と **validation_files**　を手順3で作成したファイルのパスに書き換える  
+5. `config-single.json`内の **training_files** と **validation_files** をそれぞれ手順3で作成したtrain用とval用のファイルパスに書き換える  
 
 6. `train_simgle.py`を実行し、学習を開始する。**手順5**で作成したconfigファイルを` -c `で指定し、` -m `で`models`内に学習経過が保存されるディレクトリを指定する。
-- 例
 ```bash
 python3 vits_train_single.py -c configs/config-single.json -m sample
 ```  
