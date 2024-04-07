@@ -19,7 +19,9 @@ tqdm (4.65.0)
 # 利用法(環境構築編)
 本リポジトリはDocker環境を提供しています。Docker環境を使用する場合は[手段1]を、Docker環境を使用せず手動で動作させたい場合は[手段2]を確認してください。
 
-# [手段1]dockerを使用して環境セットアップ
+
+
+## [手段1]dockerを使用して環境セットアップ
 ## リポジトリのクローン
 ```sh
 git clone https://github.com/noli-noli/VITS.git
@@ -32,8 +34,10 @@ docker compose up -d
 ```ssh
 docker exec -it vits-vits-exp-1 bash
 ```
-# [手段2]docker環境を使用せず、手動で環境セットアップ
 
+
+
+## [手段2]docker環境を使用せず、手動で環境セットアップ
 ## リポジトリのクローン
 ```sh
 git clone https://github.com/noli-noli/VITS.git
@@ -48,8 +52,8 @@ pip install -r requirements.txt
 ```
 
 
-# 利用法(学習編)
-## シングル学習
+## 利用法(学習編)
+### シングル学習
 
 
 ## マルチ学習
