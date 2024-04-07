@@ -2,7 +2,7 @@
 本リポジトリはText-to-Speechの一種であるVITSを使用するにあたり、個人的に纏めたものである。詳しい論文や引用リポジトリは、**クレジット**を確認の程。
 
 
-## 動作環境(確認済環境)
+## 動作環境(確認済Version)
 Python3 (Python3.7)  
 Cython (3.0.10)  
 librosa (0.9.1)  
@@ -53,12 +53,12 @@ pip install -r requirements.txt
 
 
 # データセット準備～学習
-データセットの準備において、**シングル学習(話者が1人)** と **マルチ学習(話者が複数人)** でそれぞれ設定方と学習時のプログラムが異なります。 
+データセットの準備～学習において、**シングル(話者が1人)** と **マルチ(話者が複数人)** でそれぞれ設定方と学習時のプログラムが異なります。 
 
-**シングル学習**
+## シングル(話者が1人)
 1. `datasets/`ディレクトリ内部に、任意の名称でディレクトリを作成
-2. 音声ファイル(22050Hz / 16-bit / モノラル)を作成したディレクトリ内に配置
-3. 音声ファイルと同じディレクトリに「音声ファイルのパス | 字幕」の内容でテキストファイルを作成。train用とval用をそれぞれ作成  
+2. 音声ファイル (22050Hz / 16-bit / モノラル) を作成したディレクトリ内に配置
+3. 音声ファイルと同じディレクトリに「 音声ファイルのパス | 字幕 」の内容でテキストファイルを作成。train用とval用をそれぞれ作成  
 
 - 例(train.txt) 100サンプル程
 ```bash
@@ -89,11 +89,45 @@ python3 vits_preprocess.py --filelists ./datasets/sample/train.txt ./datasets/sa
 
 6. `train_simgle.py`を実行し、学習を開始する。**手順5**で作成したconfigファイルを` -c `で指定し、` -m `で`models`内に学習経過が保存されるディレクトリを指定する。
 ```bash
-python3 vits_train_single.py -c configs/config-single.json -m sample
+python3 vits_train_single.py -c configs/config-single.json -m single_model
 ```  
 
-## マルチ学習
+## マルチ学習(話者が複数人)
+1. `datasets/`ディレクトリ内部に、任意の名称でディレクトリを作成
+2. 音声ファイル (22050Hz / 16-bit / モノラル) を作成したディレクトリ内に配置
+3. 音声ファイルと同じディレクトリに「 音声ファイルのパス | 話者ID | 字幕 」の内容でテキストファイルを作成。train用とval用をそれぞれ作成  
 
+- 例(train.txt) 100サンプル程
+```bash
+dataset/001.wav|01|こんにちは
+dataset/002.wav|00|初めまして
+        ・
+        ・
+dataset/100.wav|02|よろしく
+```  
+
+- 例(val.txt) 10サンプル程
+```bash
+dataset/004.wav|01|わたしはほげほげと申します
+dataset/009.wav|02|本当ですか
+dataset/053.wav|03|では
+        ・
+        ・
+dataset/088.wav|04|作業を開始します
+```  
+
+4. `vits_preprocess.py`を実行し、テキストファイル内の「字幕」を前処理
+```bash
+python3 vits_preprocess.py --filelists ./datasets/sample/train.txt ./datasets/sample/val.txt
+```  
+
+
+5. `config-multi.json`内の **training_files** と **validation_files** をそれぞれ手順3で作成したtrain用とval用のファイルパスに書き換える  
+
+6. `train_multi.py`を実行し、学習を開始する。**手順5**で作成したconfigファイルを` -c `で指定し、` -m `で`models`内に学習経過が保存されるディレクトリを指定する。
+```bash
+python3 vits_train_multi.py -c configs/config-multi.json -m multi_model
+```  
 
 ## クレジット
  - 論文：https://arxiv.org/abs/2106.06103
