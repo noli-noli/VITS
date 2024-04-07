@@ -22,15 +22,15 @@ tqdm (4.65.0)
 
 
 ## [手段1]dockerを使用して環境セットアップ
-## リポジトリのクローン
+リポジトリのクローン
 ```sh
 git clone https://github.com/noli-noli/VITS.git
 ```
-## dockerコンテナを立ち上げる
+dockerコンテナを立ち上げる
 ```ssh
 docker compose up -d
 ```
-## コンテナにアタッチ
+コンテナにアタッチ
 ```ssh
 docker exec -it vits-vits-exp-1 bash
 ```
@@ -38,22 +38,22 @@ docker exec -it vits-vits-exp-1 bash
 
 
 ## [手段2]docker環境を使用せず、手動で環境セットアップ
-## リポジトリのクローン
+リポジトリのクローン
 ```sh
 git clone https://github.com/noli-noli/VITS.git
 ```
-## ワークディレクトリに移動
+ワークディレクトリに移動
 ```sh
 cd VITS/vits-workspace
 ```
-## Pythonモジュールのインストール
+Pythonモジュールのインストール
 ```sh
 pip install -r requirements.txt
 ```
 
 
-## 利用法(学習編)
-### シングル学習
+# 利用法(学習編)
+シングル学習
 
 
 ## マルチ学習
