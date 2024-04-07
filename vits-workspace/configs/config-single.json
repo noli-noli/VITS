@@ -17,9 +17,9 @@
     "c_kl": 1.0
   },
   "data": {
-    "training_files":"filelists/takina_train.txt.cleaned",
-    "validation_files":"filelists/takina_val.txt.cleaned",
-	"text_cleaners":["japanese_cleaners"],
+    "training_files":"datasets/single/train.txt.cleaned",
+    "validation_files":"datasets/single/val.txt.cleaned",
+	  "text_cleaners":["japanese_cleaners"],
     "max_wav_value": 32768.0,
     "sampling_rate": 22050,
     "filter_length": 1024,
@@ -49,6 +49,6 @@
     "n_layers_q": 3,
     "use_spectral_norm": false
   },
-  "speakers": ["takina"],
+  "speakers": ["sample"],
   "symbols": ["_", ",", ".", "!", "?", "-", "~", "\u2026", "A", "E", "I", "N", "O", "Q", "U", "a", "b", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "v", "w", "y", "z", "\u0283", "\u02a7", "\u02a6", "\u026f", "\u0279", "\u0259", "\u0265", "\u207c", "\u02b0", "`", "\u2192", "\u2193", "\u2191", " "]
 }
