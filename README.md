@@ -129,7 +129,7 @@ python3 vits_preprocess.py --filelists ./datasets/sample/train.txt ./datasets/sa
 python3 vits_train_multi.py -c configs/config-multi.json -m multi_model
 ```  
 
-## クレジット
+#参考
  - 論文：https://arxiv.org/abs/2106.06103
  - オリジナル：https://github.com/jaywalnut310/vits
  - フォーク元：https://github.com/SayaSS/vits-finetuning
